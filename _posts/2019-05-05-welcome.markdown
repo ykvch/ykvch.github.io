@@ -1,7 +1,9 @@
 ---
+title: Welcome!
 layout: post
-title:  "Welcome!"
-date:   2019-05-05 00:39:09 +0300
+date: '2019-05-05 00:39:09 +0300'
 categories: update
 ---
-Welcome to **N**ot **Q**uite **R**ocket **S**cience blog.
+
+Welcome to **N**ot **Q**uite **R**ocket **S**cience.
+
