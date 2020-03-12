@@ -8,6 +8,6 @@ categories: update
 > (Коли компанія нарешті наважується на <abbr title="Робота з дому">WFH</abbr> замість openspace у розпал пандемії)
 
 # Expectations...
-{% include youtube.html url='https://i.giphy.com/media/3o6MbabFL1ZA8NPQhq/giphy.mp4' %}
+{% include video.html url='https://i.giphy.com/media/3o6MbabFL1ZA8NPQhq/giphy.mp4' %}
 # ...but actually
-{% include youtube.html url='https://i.giphy.com/media/vVLRlV2Ee3m7K/giphy.mp4' %}
+{% include video.html url='https://i.giphy.com/media/vVLRlV2Ee3m7K/giphy.mp4' %}
