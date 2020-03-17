@@ -2,8 +2,9 @@
 title: COVID-19 vs openspace
 layout: post
 date: '2020-03-12 08:59:59 +0300'
-categories: update
+tags: [humor]
 ---
+
 # When company finally admits <abbr title="Work from Home">WFH</abbr> as opposed to openspace on the brink of pandemy
 > (Коли компанія зрештою наважується на <abbr title="Робота з дому">WFH</abbr> замість openspace у розпал пандемії)
 
