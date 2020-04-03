@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>UAGoogle</ShortName>
+    <Description>More relevant search results with ru disabled</Description>
+    <Url type="text/html" template="https://www.google.com.ua/search?q={searchTerms}&amp;lr=-lang_ru"/>
+    <Image width="16" height="16" type="image/x-icon">data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/ZgAAADP/AP+ZAAAAZv8A/8wAAACZ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZmERERERFmZjETMzMzMRFmMzMzMzMzMWUzVVVVVVUxFTMWZmZmZTMVMxZmZmZlMxUzFmYzEREzFTMWZVMzMzMUIgZkQiIiIgQiBmZERERCZCIGZmZmZmZkIgBmZmZmZmRCIAAAAAZmZkIiIiIiBmZmREIiIiImZmZmREREQiZmbgBwAAgAEAAIABAAAAAAAAD/AAAA/wAAAOAAAADAAAAAwAAAAOAQAAD/8AAAf/AAAADwAAgA8AAIAPAADgDwAA</Image>
+</OpenSearchDescription>
