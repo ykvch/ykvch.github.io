@@ -36,12 +36,15 @@ date: '2020-04-20'
 * measure host+system overall vs exact process
 
 # Metrics representation
-* relative vs cumulative(!)
+* relative vs cumulative(!)  
+  Cumulative not always works (eg median calcualtion)  
+  Some relative metrics can be unexpectedly easy derived
+  `curr_conn_count=total_conn-total_disconn`
 * latency vs throughput
 
 # Metrics normalization
 * bind everything to timestamps (to mitigate delays, batch reporting etc)
-* make sure clocks in sync (out of sync measurements caused a lot of issues in history, eg amper induction)
+* make sure clocks in sync (out of sync measurements caused a lot of issues in history, eg amper induction story)
 * note network delays if no clock
 * agreeing diverse data sources
 
@@ -52,6 +55,7 @@ date: '2020-04-20'
 
 # Post-processing and analysis
 * average is deceptive (use various statistics analysis techniques, hire someone)
+  but useful as noise removal-trend-exposing tool
 * derivatives (partial, 1st, 2nd)
 * peak vs worst vs percentiles
 * correlations and inter-relations (something per something)
