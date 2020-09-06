@@ -10,5 +10,7 @@ tags: [humor]
 
 # Expectations...
 {% include video.html url='https://i.giphy.com/media/3o6MbabFL1ZA8NPQhq/giphy.mp4' %}
-# ...but actually
+# ...but actually...
 {% include video.html url='https://i.giphy.com/media/vVLRlV2Ee3m7K/giphy.mp4' %}
+# ...4 months later
+{% include video.html url='https://i.giphy.com/media/3o6MbabFL1ZA8NPQhq/giphy.mp4' %}
