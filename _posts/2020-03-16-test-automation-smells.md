@@ -4,9 +4,9 @@ layout: post
 tags: [qa, pytest]
 ---
 
-1. Missing code convention, styles, docsstrings, DRY, SOLID, etc.
+1. Lack of code convention, uniform style, docstrings, coding principles (DRY, SOLID, etc).
 	* Detect: run linters
-	* Fix: Treat autotests as a real code too. Write separate code convention (eg: pylint configs). Periodic code reviews for tests (can be automated)
+	* Fix: Treat autotests as a code too. Write separate code convention (eg: pylint configs). Periodic code reviews for tests should be automated.
 1. Using `time.sleep()` (especially in async code)
 	* Detect: search code
 	* Fix: wait for events, markers, flags, conditions (polling)
