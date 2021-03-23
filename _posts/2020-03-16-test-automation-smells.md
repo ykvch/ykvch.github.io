@@ -35,9 +35,23 @@ tags: [qa, pytest]
 1. Branching/nested (non-parameterized) logic in steps (and expected results).
 	* Detect: search code (and docstrings) for if-statements
 	* Fix: proper parametrize, split cases
+	* Fix: prohibit If-else statements (nesting non parameterizable logic) inside test case.
 1. Workarounds for unstable run conditions
 	* Detect: fuzzy/conditional handling of permanent steps
 	* Fix: Abstract, narrow down
 1. Parameters deep nesting, generic variable names
 	* Detect: option, value... smell-words
+	* Fix: Avoid generic variable/parameters naming (eg: option, value).
+	* Fix: Keep parameterise as flat as possible.
 1. Hardcoding without explanation
+1. Unclear docstring logic
+	* Fix: Docstring should be reproducible manually.
+	* Fix: Use `<actor> <action> <options>` 
+
+Short summary:
+```
+Docstring should be reproducible manually.
+Avoid generic variable/parameters naming (eg: option, value).
+Keep parameterise as flat as possible.
+If-else statements (nesting non parameterizable logic) are prohibited inside test case.
+```
