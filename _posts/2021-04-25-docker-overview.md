@@ -7,7 +7,11 @@ header: 'Docker'
 style: 'header { font-weight: bold; font-size: 2em; text-align: center; }'
 ---
 
-<!-- This page is marp compatible -->
+## OS-level virtualization
+
+> Note: This document is marp compatible.
+
+---
 
 ## Intro
 
