@@ -43,7 +43,9 @@ tags: [qa, pytest]
 	* Detect: option, value... smell-words
 	* Fix: Avoid generic variable/parameters naming (eg: option, value).
 	* Fix: Keep parameterise as flat as possible.
-1. Hardcoding without explanation
+1. Hardcoding without explanation (in test cases DO describe, DON'T define). Note: hardcoding here is used in broader meaining, a kind of "semantic satiation" in code.
+        * Detect: There are exact values, steps, behaviour) without ability to trace WHY are those chosen and what logic (specs?) are considered behind them.
+        * Fix: use data generators with rules derived from specs (also helps mitigate pesticide effect a little).
 1. Unclear docstring logic
 	* Fix: Docstring should be reproducible manually.
 	* Fix: Use `<actor> <action> <options>` 
