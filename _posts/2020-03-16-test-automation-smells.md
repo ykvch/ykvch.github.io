@@ -48,7 +48,9 @@ tags: [qa, pytest]
         * Fix: use data generators with rules derived from specs (also helps mitigate pesticide effect a little).
 1. Unclear docstring logic
 	* Fix: Docstring should be reproducible manually.
-	* Fix: Use `<actor> <action> <options>` 
+	* Fix: Use `<actor> <action> <options>`.
+1. Missing logs BEFORE risky operations and/or at the brim of setup/steps/teardown.
+        * Detect: run tests and see if You can clearly distinguish test phase boundaries
 
 Short summary:
 ```
