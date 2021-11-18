@@ -19,13 +19,17 @@ tags: [qa, pytest]
 1. `True != False` (obvious and useless obscure results)
 	* Detect: make tests fail, see the output
 	* Fix: Use error message (assert 2nd param)
-1. `True == False` (happy blind tests)
+1. Missing (hard to retrive) tracing bits (thread id, timestamp, case name, uuid, log/code line numbers... etc)
+	* Detect: this is a slightly more specific than previous one. See if _advertised_ error message can easily lead to point
+		in test/environment where unexpected behaviour happened.
+	* Fix: Add bits (href-s, id-s, timesamps...) to easily track back to error point.
+3. `True == False` (happy blind tests)
 	* Detect: make tests fail
 	* Fix: review test-plan, use `pytest.mark.xfail` (or skip)
-1. Too many asserts
+4. Too many asserts
 	* Detect: count asserts in tests
 	* Fix: pre-defined validators, prepare results for validation, soft-asserts
-1. Failing outside _expected behaviour_ checks
+5. Failing outside _expected behaviour_ checks
 	* Detect: review how many tests fail on test run errors
 	* Fix: assert only target feature (consider fixtures in pytest OR raising
 	non AssertionError in unittest-likes)
