@@ -16,20 +16,23 @@ tags: [qa, pytest]
 1. Using `..except: pdb.set_trace()`
 	* Detect: search code
 	* Fix: consider `--pdb` flag
-1. `True != False` (obvious and useless obscure results)
-	* Detect: make tests fail, see the output
-	* Fix: Use error message (assert 2nd param)
-1. Missing (hard to retrive) tracing bits (thread id, timestamp, case name, uuid, log/code line numbers... etc)
-	* Detect: this is a slightly more specific than previous one. See if _advertised_ error message can easily lead to point
-		in test/environment where unexpected behaviour happened.
-	* Fix: Add bits (href-s, id-s, timesamps...) to easily track back to error point.
-3. `True == False` (happy blind tests)
+1. `True == False` (happy blind tests)
 	* Detect: make tests fail
 	* Fix: review test-plan, use `pytest.mark.xfail` (or skip)
-4. Too many asserts
+1. `True != False` (obvious and useless obscure results) missing value explanation
+	* Detect: make tests fail, see the output
+	* Fix: Use error message (assert 2nd param)
+1. Hardcoding without explanation (in test cases _DO describe, DON'T define_). Note: hardcoding here is used in broader meaining, a kind of "semantic satiation" in code.
+	* Detect: There are exact values, steps, behaviour without ability to trace WHY are those chosen and what logic (specs?) are considered behind them.
+	* Fix: use data generators with rules derived from specs (also helps mitigate pesticide effect a little).
+	* Fix: comments and docstrings might help.
+1. Missing (hard to retrive) breadcrumbs (thread id, timestamp, case name, uuid, log/code line numbers... etc)
+	* Detect: this is a slightly broader than previous ones. See if _advertised_ error message can easily lead to point in test/environment WHERE unexpected behaviour happened.
+	* Fix: Add bits (href-s, id-s, timesamps...) to easily track back to error point.
+1. Too many asserts
 	* Detect: count asserts in tests
 	* Fix: pre-defined validators, prepare results for validation, soft-asserts
-5. Failing outside _expected behaviour_ checks
+1. Failing outside _expected behaviour_ checks
 	* Detect: review how many tests fail on test run errors
 	* Fix: assert only target feature (consider fixtures in pytest OR raising
 	non AssertionError in unittest-likes)
@@ -47,18 +50,16 @@ tags: [qa, pytest]
 	* Detect: option, value... smell-words
 	* Fix: Avoid generic variable/parameters naming (eg: option, value).
 	* Fix: Keep parameterise as flat as possible.
-1. Hardcoding without explanation (in test cases DO describe, DON'T define). Note: hardcoding here is used in broader meaining, a kind of "semantic satiation" in code.
-        * Detect: There are exact values, steps, behaviour) without ability to trace WHY are those chosen and what logic (specs?) are considered behind them.
-        * Fix: use data generators with rules derived from specs (also helps mitigate pesticide effect a little).
 1. Unclear docstring logic
-	* Fix: Docstring should be reproducible manually.
+	* Detect: Try to reproduce docstring steps manually.
 	* Fix: Use `<actor> <action> <options>`.
 1. Missing logs BEFORE risky operations and/or at the brim of setup/steps/teardown.
         * Detect: run tests and see if You can clearly distinguish test phase boundaries
+1. Missing asserts and/or validations in test case entirely.
 
 Short summary:
 ```
-Docstring should be reproducible manually.
+Docstring should be reproducible manually (to some extent).
 Avoid generic variable/parameters naming (eg: option, value).
 Keep parameterise as flat as possible.
 If-else statements (nesting non parameterizable logic) are prohibited inside test case.
