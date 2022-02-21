@@ -4,18 +4,18 @@ layout: post
 date: '2022-01-03'
 ---
 
-## Test lab
+## Test environment (lab, stand)
 * controllable / observable
-* reproducible / predictable
+* reproducible / predictable ([producing reliable results is far more important that just results themseleves](https://twitter.com/CormacORafferty/status/1493463979041173505)))
 * disposable / rapidly deployable
 
 ## Parts of framework:
 ### Essential:
-* test framework config (CLI, files, env)
-* SUT management (separate! Derived from above)
+* test framework configuration (as fallback dicts: CLI->config files->env variables)
+* SUT management (separate module! Derived from above)
 * logging
 * runner
-* reporting
+* reporting/aggregation
 
 ### To make it actually work:
 * same but meaningful...
@@ -33,7 +33,7 @@ date: '2022-01-03'
 * documentation (help text)
 
 ## Style:
-* fixtures should represent states and resources (NOT actions! Idemopotency FTW)
+* fixtures should represent states and resources (NOT actions! Idempotency FTW)
 * fixtures should target SUT and its environment
 * plugins should target test process and framework itself
 * do NOT intermix unit/component/integration/e2e tests
