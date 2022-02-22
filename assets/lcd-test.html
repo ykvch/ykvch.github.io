@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Test LCD rotating colors</title>
+  <style>
+    html, body { margin: 0; height: 100%; }
+  </style>
+</head>
+
+<body>
+</body>
+<script>
+  colors = ["#f00", "#0f0", "#00f", "#000", "#fff"];
+
+  function chColor() {
+    color = colors.shift();
+    colors.push(color);
+    document.body.style.background = color;
+  };
+  document.body.addEventListener('click', chColor, true);
+  document.documentElement.requestFullscreen();
+</script>
+
+</html>
