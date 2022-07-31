@@ -27,6 +27,7 @@ tags: [qa, pytest]
 1. Hardcoding without explanation (in test cases _DO describe, DON'T define_). Note: hardcoding here is used in broader meaining, a kind of "semantic satiation" in code.
   * Detect: There are exact values, steps, behaviour without ability to trace WHY are those chosen and what logic (specs?) are considered behind them.
   * Fix: use data generators with rules derived from specs (also helps mitigate pesticide effect a little).
+  * Fix: don't be too implementatin specific (eg: use 'turn lights on' instead of 'flip switch up').
   * Fix: comments and docstrings might help.
 1. Missing (hard to retrive) breadcrumbs (thread id, timestamp, case name, uuid, log/code line numbers... etc)
   * Detect: this is a slightly broader than previous ones. See if _advertised_ error message can easily lead to point in test/environment WHERE unexpected behaviour happened.
