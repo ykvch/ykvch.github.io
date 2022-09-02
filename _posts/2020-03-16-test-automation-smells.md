@@ -70,7 +70,7 @@ tags: [qa, pytest]
   	
 	If former is bigger than the latter, chances are fixtures got misused.
   * Fix: Refactor fixtures into meaningful pythonic reusable modules. Parametrize fixtures. RTFM, think hard of what fixtures are meant for.
-
+1. God fixture.
 
 # Short summary
 
