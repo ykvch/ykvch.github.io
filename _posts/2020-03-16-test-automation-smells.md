@@ -23,7 +23,7 @@ tags: [qa, pytest]
   * Detect: make tests fail, see the output
   * Fix: Use error message (assert 2nd param)
 1. Hardcoding without explanation (in test cases _DO describe, DON'T define_).
-  > Note: hardcoding here is used in broader meaining, as kind of source for "semantic satiation" in code.
+    > Note: hardcoding here is used in broader meaining, as a source for "semantic satiation" in code.
   * Detect: There are exact values, steps, behaviour without ability to trace WHY are those chosen and what logic (specs?) are considered behind them.
   * Fix: use data generators with rules derived from specs (also helps mitigate pesticide effect a little).
   * Fix: don't be too implementatin specific (eg: use 'turn lights on' instead of 'flip switch up').
@@ -66,9 +66,7 @@ tags: [qa, pytest]
 	vs
     
 	```grep -r --include='*.py' 'def test_' . | wc -l```
-  	
 	If former is bigger than the latter, chances are fixtures got misused.
-  
   * Fix: Refactor fixtures into meaningful pythonic reusable modules. Parametrize fixtures. RTFM, think hard of what fixtures are meant for.
 1. God fixture.
 
