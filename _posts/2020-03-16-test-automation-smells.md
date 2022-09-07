@@ -4,8 +4,6 @@ layout: post
 tags: [qa, pytest]
 ---
 
-# Test automation smells
-
 1. Lack of code convention, uniform style, docstrings, coding principles (DRY, SOLID, etc).
   * Detect: run linters
   * Fix: Treat autotests as a code too. Write separate code convention (eg: pylint configs). Periodic code reviews for tests should be automated.
@@ -24,13 +22,14 @@ tags: [qa, pytest]
 1. `True != False` (obvious and useless obscure results) missing value explanation
   * Detect: make tests fail, see the output
   * Fix: Use error message (assert 2nd param)
-1. Hardcoding without explanation (in test cases _DO describe, DON'T define_). Note: hardcoding here is used in broader meaining, a kind of "semantic satiation" in code.
+1. Hardcoding without explanation (in test cases _DO describe, DON'T define_).
+  > Note: hardcoding here is used in broader meaining, as kind of source for "semantic satiation" in code.
   * Detect: There are exact values, steps, behaviour without ability to trace WHY are those chosen and what logic (specs?) are considered behind them.
   * Fix: use data generators with rules derived from specs (also helps mitigate pesticide effect a little).
   * Fix: don't be too implementatin specific (eg: use 'turn lights on' instead of 'flip switch up').
   * Fix: comments and docstrings might help.
-1. Missing (hard to retrive) breadcrumbs (thread id, timestamp, case name, uuid, log/code line numbers... etc)
-  * Detect: this is a slightly broader than previous ones. See if _advertised_ error message can easily lead to point in test/environment WHERE unexpected behaviour happened.
+1. Missing (hard to retrive) breadcrumbs (thread id, timestamp, case name, uuid, log/code line numbers... etc) during debugging/investigation/results analysis.
+  * Detect: See if _advertised_ error message can easily lead to point in test/environment WHERE unexpected behaviour happened.
   * Fix: Add bits (href-s, id-s, timesamps...) to easily track back to error point.
 1. Too many asserts
   * Detect: count asserts in tests
@@ -69,6 +68,7 @@ tags: [qa, pytest]
 	```grep -r --include='*.py' 'def test_' . | wc -l```
   	
 	If former is bigger than the latter, chances are fixtures got misused.
+  
   * Fix: Refactor fixtures into meaningful pythonic reusable modules. Parametrize fixtures. RTFM, think hard of what fixtures are meant for.
 1. God fixture.
 
