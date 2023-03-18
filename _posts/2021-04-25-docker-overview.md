@@ -69,7 +69,7 @@ Docker reuses existing standards/technologies/philosophy.
 ![bg auto drop-shadow right:55%](https://upload.wikimedia.org/wikipedia/commons/0/09/Docker-linux-interfaces.svg)
 
 - NO kernel inside
-- SINGLE process
+- SINGLE process (although it may fork kids inside the same container)
 
 
 _From wikimedia -->_
