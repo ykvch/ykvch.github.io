@@ -66,3 +66,10 @@ date: '2020-04-20'
 
 # Cherry-picking (bonus)
 * put unique marker on each single use-case instance/client/dataflow, so that "single" chain could be easily followed
+
+# S.M.A.R.T. acronym for load testing
+* Specific (target single volatile component, prepare hypothesis)
+* Measurable (record input and SUT reaction metrics, keep them aligned)
+* Attainable (easy to deploy and run, reach stress level w/o bottlenecks)
+* Reproducible (repeatable, no noise)
+* Timely (immediate visual results)

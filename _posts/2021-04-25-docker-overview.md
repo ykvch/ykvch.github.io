@@ -5,6 +5,7 @@ date: '2021-04-24T20:35:44.899Z'
 theme: gaia
 header: 'Docker'
 style: 'header { font-weight: bold; font-size: 2em; text-align: center; }'
+marp: true
 ---
 
 ## OS-level virtualization
