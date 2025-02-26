@@ -1,5 +1,5 @@
 ---
-title: Python 2 -> 3 migration notes
+title: Python 2 to 3 migration notes
 layout: post
 date: '2020-07-05 07:18:09 +0300'
 categories: update
@@ -7,9 +7,11 @@ categories: update
 
 Basic workflow:
 ===
-1. Run futurize utility (part of future module) against all python files in project (http://python-future.org/automatic_conversion.html). Command used: `futurize -0nw --no-diffs <dir>`
+1. Install futurize via `pip install future` or apt/yum/pacman install `python-future` (sometimes python3-future).
+1. Run futurize utility against all python files in project directory: `futurize -0nw --no-diffs <dir>` (see http://python-future.org/automatic_conversion.html for details).
 2. Get acquainted with http://python-future.org/
-3. Fix code for Python 3 compatiblity. Not all issues can be automatically fixed by `future`, chances are that one will face unreliable code after 'futurization' procedure. Most such errors appear due to semantic changes in Python 3 compared to Python 2 AND ignoring proper code practices in their project.
+3. Fix code for Python 3 compatiblity. Not all issues can be automatically fixed by `future`, chances are that one will face unreliable code after 'futurization' procedure.
+   > NOTE: Many errors appear due to semantic changes in Python 3 vs Python 2 AND ignoring proper code practices (consider project tidying up BEFORE futurize, this makes things MUCH easier).
 
 
 Notable observations:
@@ -29,6 +31,7 @@ Notable observations:
     Consider opening files in `'rb'` mode whenever interaction with byte-based buffers is required (eg.: sending file data via tornado server).
 * Consider using `codecs` module
 * Replace `StringIO` usage with appropriate `BytesIO`/`StringIO` classes from `io` module.
+* Old (deprecated) `imp` might need manual change to `importlib`.
 * `JSON` related modules mostly use unicode, so make sure to properly inject non-text data (decode bytes where necessary, or use `codecs` module).  
     Some JSON errors like `UnicodeDecodeError` are specific to `Python 2` after futurizing. `Python 3` overcomes them with its bytes/text division model.
 * Update external dependencies to use newer modules in favour of outdated ones:
@@ -39,6 +42,7 @@ Notable observations:
     * pylibpcap -> pcapy
     * StringIO -> io
     * SOAPpy -> SOAPpy-py3
+    * imp ->
     * suds -> suds-jurko
 * Some modules require specific version numbers to become compatible with `Python 3`.
 * Most built-in module imports are fixed by `future` utility itself (e.g. `urllib`).
