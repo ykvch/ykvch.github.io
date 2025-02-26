@@ -42,7 +42,6 @@ Notable observations:
     * pylibpcap -> pcapy
     * StringIO -> io
     * SOAPpy -> SOAPpy-py3
-    * imp ->
     * suds -> suds-jurko
 * Some modules require specific version numbers to become compatible with `Python 3`.
 * Most built-in module imports are fixed by `future` utility itself (e.g. `urllib`).
