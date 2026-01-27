@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Playwright Practice Page</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  .hidden { display: none; }
+  .tooltip {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px dotted #555;
+  }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  table { border-collapse: collapse; width: 50%; margin-top: 10px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { cursor: pointer; background-color: #f2f2f2; }
+  #modal {
+    display: none;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+  #modal-content {
+    background: white; padding: 20px; margin: 100px auto; width: 300px;
+    border-radius: 5px;
+  }
+  #features {
+    margin-top: 40px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  #features h2 {
+    margin-top: 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Playwright UI Test Playground</h1>
+
+<h2>Static Elements</h2>
+<p id="static-text">This is a static paragraph with an ID.</p>
+<p class="static-class">This is a static paragraph with a class.</p>
+<button id="static-button">Click Me</button>
+
+<h2>Dynamic Visibility</h2>
+<button id="show-delayed">Show Delayed Element</button>
+<div id="delayed-element" class="hidden">I appeared after a delay!</div>
+
+<h2>Dynamic DOM Changes</h2>
+<button id="add-item">Add Item</button>
+<button id="remove-item">Remove Item</button>
+<ul id="item-list">
+  <li>Item 1</li>
+</ul>
+
+<h2>Form Elements</h2>
+<form id="sample-form">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name"><br><br>
+  <label for="color">Favorite Color:</label>
+  <select id="color" name="color">
+    <option value="">Select...</option>
+    <option value="red">Red</option>
+    <option value="blue">Blue</option>
+  </select><br><br>
+  <input type="checkbox" id="subscribe" name="subscribe">
+  <label for="subscribe">Subscribe to newsletter</label><br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<h2>Modal Dialog</h2>
+<button id="open-modal">Open Modal</button>
+<div id="modal">
+  <div id="modal-content">
+    <p>This is a modal dialog.</p>
+    <button id="close-modal">Close</button>
+  </div>
+</div>
+
+<h2>Sortable Table</h2>
+<table id="sortable-table">
+  <thead>
+    <tr>
+      <th data-sort="name">Name</th>
+      <th data-sort="age">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>30</td></tr>
+    <tr><td>Bob</td><td>25</td></tr>
+    <tr><td>Charlie</td><td>35</td></tr>
+  </tbody>
+</table>
+
+<h2>Tooltip</h2>
+<p>Hover over the <span class="tooltip">word
+  <span class="tooltiptext">Tooltip text</span>
+</span> to see a tooltip.</p>
+
+<div id="features">
+  <h2>Features for Playwright Practice</h2>
+  <ul>
+    <li><strong>Locators:</strong> IDs, classes, attributes, and text selectors.</li>
+    <li><strong>Visibility checks:</strong> <code>#delayed-element</code> appears after 2 seconds.</li>
+    <li><strong>Dynamic DOM:</strong> Adding/removing list items with buttons.</li>
+    <li><strong>Form interactions:</strong> Typing into inputs, selecting dropdowns, checking checkboxes.</li>
+    <li><strong>Modal handling:</strong> Opening and closing overlay dialogs.</li>
+    <li><strong>Table sorting:</strong> Clicking headers changes row order.</li>
+    <li><strong>Tooltips:</strong> Hover-triggered elements for mouse interaction tests.</li>
+  </ul>
+</div>
+
+<script>
+document.getElementById('show-delayed').addEventListener('click', () => {
+  setTimeout(() => {
+    document.getElementById('delayed-element').classList.remove('hidden');
+  }, 2000);
+});
+
+document.getElementById('add-item').addEventListener('click', () => {
+  const li = document.createElement('li');
+  li.textContent = 'Item ' + (document.querySelectorAll('#item-list li').length + 1);
+  document.getElementById('item-list').appendChild(li);
+});
+
+document.getElementById('remove-item').addEventListener('click', () => {
+  const list = document.getElementById('item-list');
+  if (list.lastElementChild) {
+    list.removeChild(list.lastElementChild);
+  }
+});
+
+document.getElementById('open-modal').addEventListener('click', () => {
+  document.getElementById('modal').style.display = 'block';
+});
+document.getElementById('close-modal').addEventListener('click', () => {
+  document.getElementById('modal').style.display = 'none';
+});
+
+document.querySelectorAll('#sortable-table th').forEach(th => {
+  th.addEventListener('click', () => {
+    const table = th.closest('table');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const index = Array.from(th.parentNode.children).indexOf(th);
+    rows.sort((a, b) => {
+      const valA = a.children[index].textContent;
+      const valB = b.children[index].textContent;
+      return isNaN(valA) ? valA.localeCompare(valB) : Number(valA) - Number(valB);
+    });
+    tbody.innerHTML = '';
+    rows.forEach(row => tbody.appendChild(row));
+  });
+});
+</script>
+
+</body>
+</html>
